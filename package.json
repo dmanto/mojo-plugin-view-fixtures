@@ -62,6 +62,7 @@
     "coverage": "c8 tap --no-coverage test/*.js",
     "coverage:ci": "c8 --reporter lcovonly tap --no-coverage test/*.js",
     "lint": "eslint \"test/*.js\" \"src/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
     "publish:minor": "npm version minor && npm publish",
     "publish:patch": "npm version patch && npm publish",
     "test": "tap --no-coverage test/*.js"
