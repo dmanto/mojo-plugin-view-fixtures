@@ -1,5 +1,5 @@
 {
-  "name": "mojo-plugin-fixtures4views",
+  "name": "mojo-plugin-yaml-fixtures",
   "version": "0.0.0",
   "description": "Helps creating fixtures for mojo.js views",
   "keywords": [
