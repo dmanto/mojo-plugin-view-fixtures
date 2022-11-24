@@ -1,5 +1,5 @@
 {
-  "name": "mojo-plugin-yaml-fixtures",
+  "name": "mojo-plugin-view-fixtures",
   "version": "0.0.0",
   "description": "Helps creating fixtures for mojo.js views",
   "keywords": [
@@ -37,19 +37,19 @@
     "tap": "^16.3.0",
     "typescript": "^4.7.0"
   },
-  "exports": "./lib/yaml-fixtures.js",
+  "exports": "./lib/view-fixtures.js",
   "files": [
     "lib/"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmanto/mojo-plugin-yaml-fixtures.git"
+    "url": "git+https://github.com/dmanto/mojo-plugin-view-fixtures.git"
   },
   "bugs": {
-    "url": "https://github.com/dmanto/mojo-plugin-yaml-fixtures/issues"
+    "url": "https://github.com/dmanto/mojo-plugin-view-fixtures/issues"
   },
-  "homepage": "https://github.com/dmanto/mojo-plugin-yaml-fixtures",
+  "homepage": "https://github.com/dmanto/mojo-plugin-view-fixtures",
   "scripts": {
     "build": "npx tsc --build ./",
     "build:clean": "run-s clean build",
