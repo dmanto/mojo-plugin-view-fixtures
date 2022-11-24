@@ -1,12 +1,12 @@
-import type { MojoApp } from '@mojojs/core';
+import type {MojoApp} from '@mojojs/core';
 import Path from '@mojojs/path';
 import yaml from 'js-yaml';
 
-export default function fixtures4ViewsPlugin(app: MojoApp, options: { route?: string; baseDir?: string }) {
+export default function fixtures4ViewsPlugin(app: MojoApp, options: {route?: string; baseDir?: string}) {
   const route = options.route ?? '--';
   const baseDir = options.baseDir ?? 'test/support/fixtures';
   app.router.get(route, async ctx => {
-    ctx.render({ text: `I am in the view-fixtures route, baseDir is ${baseDir}` });
+    ctx.render({text: `I am in the view-fixtures route, baseDir is ${baseDir}`});
   });
 }
 
@@ -28,7 +28,7 @@ const example = saveFixture`
         - role: admin
 `;
 export const qw = (strings: TemplateStringsArray, ...values: any) => {
-  return String.raw({ raw: strings }, ...values).match(/\S+/g);
+  return String.raw({raw: strings}, ...values).match(/\S+/g);
 };
 console.log(example);
 console.log(getFixture(example));
