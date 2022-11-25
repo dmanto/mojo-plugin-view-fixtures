@@ -1,12 +1,22 @@
-import type {MojoApp} from '@mojojs/core';
+import type { MojoApp } from '@mojojs/core';
 import Path from '@mojojs/path';
 import yaml from 'js-yaml';
 
-export default function fixtures4ViewsPlugin(app: MojoApp, options: {route?: string; baseDir?: string}) {
+export default function viewFixturesPlugin(app: MojoApp, options: { route?: string; baseDir?: string }) {
   const route = options.route ?? '--';
   const baseDir = options.baseDir ?? 'test/support/fixtures';
+  let view: string;
   app.router.get(route, async ctx => {
-    ctx.render({text: `I am in the view-fixtures route, baseDir is ${baseDir}`});
+    const param = await ctx.params();
+    const session = await ctx.session();
+    for (const [name, value] of param.entries()) {
+      const stashVar = name.match(/^(?:x|stash)\.(\w+)/);
+      const sessionVar = name.match(/^(?:s|session)\.(\w+)/);
+      if (stashVar) ctx.stash[stashVar[1]] = value;
+      else if (sessionVar) session[sessionVar[1]] = value;
+      else if (name.match(/^v(iew)?$/)) view = value;
+    }
+    ctx.render({ view });
   });
 }
 
@@ -27,8 +37,8 @@ const example = saveFixture`
         - user: alguien
         - role: admin
 `;
-export const qw = (strings: TemplateStringsArray, ...values: any) => {
-  return String.raw({raw: strings}, ...values).match(/\S+/g);
+export const qw = (strings: TemplateStringsArray, ...values: any[]) => {
+  return String.raw({ raw: strings }, ...values).match(/\S+/g);
 };
 console.log(example);
 console.log(getFixture(example));
