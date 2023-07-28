@@ -42,3 +42,23 @@ export const qw = (strings: TemplateStringsArray, ...values: any[]) => {
 };
 console.log(example);
 console.log(getFixture(example));
+// Following code was used as an example. To be used as inspiration only
+// if (app.mode === 'development')
+//   app.get('/--', async ctx => {
+//     const params = ctx.req.query;
+//     const session = await ctx.session();
+//     const results: {[key: string]: string} = {};
+//     for (const [name, value] of params) {
+//       results[name] = value;
+//       const sessionMatch = name.match(/^-(\w+)$/);
+//       const stashMatch = name.match(/^(\w+)$/);
+//       if (stashMatch) {
+//         ctx.stash[stashMatch[1]] = value;
+//       } else if (sessionMatch) {
+//         session[sessionMatch[1]] = value;
+//       }
+//     }
+//     if (results['redirect-to']) return await ctx.redirectTo(results['redirect-to']);
+//     if (results.view) return await ctx.render({view: results.view});
+//     await ctx.render({json: results});
+//   });
